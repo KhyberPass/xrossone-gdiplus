@@ -1,0 +1,245 @@
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A9A27A6-D345-49EF-865F-06854083E99F}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>XrossOne.Drawing</AssemblyName>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <OutputFileFolder>\Program Files\XrossGDIPlus</OutputFileFolder>
+    <RootNamespace>OpenVue</RootNamespace>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OSVersion>5.0</OSVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <FormFactorID>
+    </FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DeployDirSuffix>$(AssemblyName)</DeployDirSuffix>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>0</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>off</GenerateSerializationAssemblies>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>0</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>off</GenerateSerializationAssemblies>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <Name>MSCorLib</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\BitmapBuffer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\BrushFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\GradientBrushFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\GraphicsFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\GraphicsPathFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\GraphicsPathIterator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\GraphicsPathOutline.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\GraphicsPathRenderer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\GraphicsPathSketch.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\IGraphicsBuffer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\LineFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\PenFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\PointFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\RectangleFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\SimpleGraphicsBuffer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\DrawingFP\SolidBrushFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\BitmapX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\BlendX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\BrushX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\ColorBlendX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\DIBGraphicsBuffer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\Enums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\FontX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\GradientBrushX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\GraphicsPathX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\GraphicsX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\ImageAttributesX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\LinearGradientBrushX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\MatrixX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\PenX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\PointF.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\RadialGradientBrushX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\SolidBrushX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\TextureBrushX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Drawing\Utils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\FixedPoint\DoubleFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\FixedPoint\MathFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\FixedPoint\MatrixFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\FixedPoint\SingleFP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Gdi\GdiDefines.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Gdi\GdiHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Gdi\GdiHelperPC.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XrossOne\Gdi\GdiHelperPocketPC.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
