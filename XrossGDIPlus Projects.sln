@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{20D4826A-C6FA-45DB-90F4-C717570B9F32}") = "XrossGDIPlus", "XrossGDIPlus\XrossGDIPlus.csdproj", "{1A9A27A6-D345-49EF-865F-06854083E99F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{20D4826A-C6FA-45DB-90F4-C717570B9F32}") = "XrossGDIPlusFeatures", "XrossGDIPlusFeatures\XrossGDIPlusFeatures.csdproj", "{8070FB8D-30F3-4708-8416-A468AB29E541}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{1A9A27A6-D345-49EF-865F-06854083E99F}.Debug.ActiveCfg = Debug|Pocket PC
+		{1A9A27A6-D345-49EF-865F-06854083E99F}.Debug.Build.0 = Debug|Pocket PC
+		{1A9A27A6-D345-49EF-865F-06854083E99F}.Debug.Deploy.0 = Debug|Pocket PC
+		{1A9A27A6-D345-49EF-865F-06854083E99F}.Release.ActiveCfg = Release|Pocket PC
+		{1A9A27A6-D345-49EF-865F-06854083E99F}.Release.Build.0 = Release|Pocket PC
+		{1A9A27A6-D345-49EF-865F-06854083E99F}.Release.Deploy.0 = Release|Pocket PC
+		{8070FB8D-30F3-4708-8416-A468AB29E541}.Debug.ActiveCfg = Debug|Pocket PC
+		{8070FB8D-30F3-4708-8416-A468AB29E541}.Debug.Build.0 = Debug|Pocket PC
+		{8070FB8D-30F3-4708-8416-A468AB29E541}.Debug.Deploy.0 = Debug|Pocket PC
+		{8070FB8D-30F3-4708-8416-A468AB29E541}.Release.ActiveCfg = Release|Pocket PC
+		{8070FB8D-30F3-4708-8416-A468AB29E541}.Release.Build.0 = Release|Pocket PC
+		{8070FB8D-30F3-4708-8416-A468AB29E541}.Release.Deploy.0 = Release|Pocket PC
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
