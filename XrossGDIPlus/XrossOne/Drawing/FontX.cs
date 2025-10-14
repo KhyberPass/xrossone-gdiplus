@@ -106,7 +106,7 @@ namespace XrossOne.Drawing
 			lf.Escapement = Escapement;
 			IntPtr hdc = GdiHelper.GetDC(IntPtr.Zero);
 			int cyDevice_Res = GdiHelper.GetDeviceCaps(hdc, LOGPIXELSY);
-			GdiHelper.ReleaseDC(hdc);
+			GdiHelper.ReleaseDC(IntPtr.Zero, hdc);
 			float flHeight = ((float)Size * (float)cyDevice_Res) / 72.0F;
 			int iHeight = (int)(flHeight + 0.5);
 			// Set height negative to request 'Em-Height' (versus

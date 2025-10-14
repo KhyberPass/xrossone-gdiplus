@@ -227,14 +227,6 @@ namespace XrossOne.Gdi
 				return GdiHelperPC.GetDC(hwnd);
 		}
 
-		public static void ReleaseDC( IntPtr hDC )
-		{
-			if (IsPocketPC)
-				GdiHelperPocketPC.ReleaseDC(hDC);
-			else
-				GdiHelperPC.ReleaseDC(hDC);
-		}
-
 		public static int ReleaseDC(IntPtr hwnd, IntPtr hdc)
 		{
 			if (IsPocketPC)

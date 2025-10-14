@@ -95,10 +95,8 @@ namespace XrossOne.Gdi
 		public byte     ClipPrecision;
 		public byte     Quality;
 		public byte     PitchAndFamily;
-		//[MarshalAs(UnmanagedType.ByValTStr, SizeConst=32)]
-		//public string	lfFaceName;
-
-		public char[]   FaceName;// = new char[32];
+		[MarshalAs(UnmanagedType.ByValTStr, SizeConst=32)]
+		public string	lfFaceName;
 	} 
 	public enum GdiTextFormat
 	{

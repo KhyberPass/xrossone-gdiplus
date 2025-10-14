@@ -154,9 +154,6 @@ namespace XrossOne.Gdi
 		[DllImport("Coredll.dll", EntryPoint="GetDC")]
 		public static extern IntPtr GetDC(IntPtr hwnd);
 
-		[DllImport ("Coredll.dll")]
-		public static extern void ReleaseDC( IntPtr hDC );
-
 		[DllImport("Coredll.dll", EntryPoint="ReleaseDC")]
 		public static extern int ReleaseDC(IntPtr hwnd, IntPtr hdc);
 

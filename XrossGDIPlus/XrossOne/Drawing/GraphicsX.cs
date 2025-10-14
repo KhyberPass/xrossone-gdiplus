@@ -158,7 +158,7 @@ namespace XrossOne.Drawing
 			GdiHelper.SelectObject(hdcTemp, hFontOld);
 			GdiHelper.SelectObject(hdcTemp, hBitmapOld);
 			GdiHelper.DeleteDC(hdcTemp);
-			GdiHelper.ReleaseDC(hDC);
+			GdiHelper.ReleaseDC(GdiHelper.GetActiveWindow(), hDC);
 		
 			int w = Math.Min(graphics.renderer.Width - x, buffer.Width);
 			int h = Math.Min(graphics.renderer.Height - y, buffer.Height);
@@ -199,7 +199,7 @@ namespace XrossOne.Drawing
 				GdiTextFormat.Left | GdiTextFormat.Top | GdiTextFormat.CalcRect); 
 			GdiHelper.SelectObject(hdcTemp, hFontOld);
 			GdiHelper.DeleteDC(hdcTemp);
-			GdiHelper.ReleaseDC(hDC);
+			GdiHelper.ReleaseDC(GdiHelper.GetActiveWindow(), hDC);
 			return new Size(rc.Right - rc.Left, rc.Bottom - rc.Top);
 		}
 

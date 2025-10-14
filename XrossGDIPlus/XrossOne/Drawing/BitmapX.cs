@@ -94,7 +94,7 @@ namespace XrossOne.Drawing
 			FromHBitmap(handle);
 			GdiHelper.DeleteObject(handle);
 			GdiHelper.DeleteDC(hdcComp);
-			GdiHelper.ReleaseDC(hdc);
+			GdiHelper.ReleaseDC(GdiHelper.GetActiveWindow(), hdc);
 		}
 		public BitmapX(string filename)
 		{
@@ -189,7 +189,7 @@ namespace XrossOne.Drawing
 			GdiHelper.SelectObject(hdcCompTarget, hbmpOld2);
 			GdiHelper.DeleteDC(hdcCompSource);
 			GdiHelper.DeleteDC(hdcCompTarget);
-			GdiHelper.ReleaseDC(hdc);
+			GdiHelper.ReleaseDC(GdiHelper.GetActiveWindow(), hdc);
 
 			return bmDsc;
 		}
@@ -223,7 +223,7 @@ namespace XrossOne.Drawing
 			GdiHelper.SelectObject(hdcCompTarget, hbmpOld2);
 			GdiHelper.DeleteDC(hdcCompSource);
 			GdiHelper.DeleteDC(hdcCompTarget);
-			GdiHelper.ReleaseDC(hdc);
+			GdiHelper.ReleaseDC(GdiHelper.GetActiveWindow(), hdc);
 		}
 		public int Width
 		{
@@ -360,7 +360,7 @@ namespace XrossOne.Drawing
 				byte * pTemp;
 				IntPtr hdc = GdiHelper.GetDC(GdiHelper.GetActiveWindow());
 				hBitmap = GdiHelper.CreateDIBSection(hdc, (byte*)pBitmapInfo, 0, &pTemp, (IntPtr)0, (uint)0);
-				GdiHelper.ReleaseDC(hdc);
+				GdiHelper.ReleaseDC(GdiHelper.GetActiveWindow(), hdc);
 				pPixelData = pTemp;
 			}
 		}

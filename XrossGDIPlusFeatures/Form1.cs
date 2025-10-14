@@ -157,7 +157,7 @@ namespace XrossGDIPlusFeatures
 		private void menuItem7_Click(object sender, System.EventArgs e)
 		{
 			//Text = "VG Drawing";
-			Application.DoEvents();
+			//Application.DoEvents();
 			Cursor.Current = Cursors.WaitCursor;
 
 			//Clear the background and reset the transform state
@@ -217,7 +217,7 @@ namespace XrossGDIPlusFeatures
 		private void menuItem1_Click(object sender, System.EventArgs e)
 		{
 			Text = "Line Cap/Join";
-			Application.DoEvents();
+			//Application.DoEvents();
 			Cursor.Current = Cursors.WaitCursor;
 
 			//int tc = Environment.TickCount;
@@ -270,7 +270,7 @@ namespace XrossGDIPlusFeatures
 		private void menuItem2_Click(object sender, System.EventArgs e)
 		{
 			Text = "Transformation";
-			Application.DoEvents();
+			//Application.DoEvents();
 			Cursor.Current = Cursors.WaitCursor;
 
 			//Clear the background and reset the transform state
@@ -322,7 +322,7 @@ namespace XrossGDIPlusFeatures
 		private void menuItem3_Click(object sender, System.EventArgs e)
 		{
 			Text = "Gradient";
-			Application.DoEvents();
+			//Application.DoEvents();
 			Cursor.Current = Cursors.WaitCursor;
 
 			//Clear the background and reset the transform state
@@ -473,7 +473,7 @@ namespace XrossGDIPlusFeatures
 		private void menuItem8_Click(object sender, System.EventArgs e)
 		{
 			Text = "Path";
-			Application.DoEvents();
+			//Application.DoEvents();
 			Cursor.Current = Cursors.WaitCursor;
 
             //Clear the background and reset the transform state
