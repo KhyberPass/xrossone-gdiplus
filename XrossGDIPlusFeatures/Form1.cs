@@ -126,6 +126,7 @@ namespace XrossGDIPlusFeatures
 			// 
 			this.Menu = this.mainMenu2;
 			this.Text = "Form1";
+			this.Size = new Size(800, 500);
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
 

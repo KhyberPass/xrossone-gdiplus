@@ -180,7 +180,14 @@ namespace XrossOne.Drawing
 			graphics.Buffer.IsDirty = true;
 */			
 			Rectangle rect = new Rectangle(x, y, buffer.Width, buffer.Height);
-			TextBrushX br = new TextBrushX(brush.WrappedBrush, buffer, rect);
+
+            // Draws anti-aliased black text but with white background
+            //TextureBrushX br = new TextureBrushX(buffer, rect);
+
+            // Draws mono color text where all the anti-aliasing is 
+            // converted to a mono color, but the background is transparent
+            TextBrushX br = new TextBrushX(brush.WrappedBrush, buffer, rect);
+
 			FillRectangle(br, rect);
 			buffer.Dispose();
 
@@ -473,6 +480,15 @@ namespace XrossOne.Drawing
 				graphics.DrawPolyline(Utils.ToPointFPArray(points));
 			}
 		}
+        public void DrawLines(PenX pen, PointF[] points)
+        {
+            lock (this)
+            {
+                graphics.Pen = PenX.ToPenFP(pen);
+                graphics.Matrix = matrix == null ? null : matrix.matrix;
+                graphics.DrawPolyline(Utils.ToPointFPArray(points));
+            }
+        }
 		public void DrawPolygon (PenX pen, Point [] points)
 		{
 			lock(this)
@@ -482,6 +498,15 @@ namespace XrossOne.Drawing
 				graphics.DrawPolygon(Utils.ToPointFPArray(points));
 			}
 		}
+        public void DrawPolygon(PenX pen, PointF[] points)
+        {
+            lock (this)
+            {
+                graphics.Pen = PenX.ToPenFP(pen);
+                graphics.Matrix = matrix == null ? null : matrix.matrix;
+                graphics.DrawPolygon(Utils.ToPointFPArray(points));
+            }
+        }
 
 		public void DrawRectangle (PenX pen, RectangleF rect)
 		{
@@ -629,6 +654,17 @@ namespace XrossOne.Drawing
 				graphics.FillPolygon(Utils.ToPointFPArray(points));
 			}
 		}
+
+        public void FillPolygon(BrushX brush, PointF[] points)
+        {
+            lock (this)
+            {
+                graphics.Brush = brush.WrappedBrush;
+                graphics.Matrix = matrix == null ? null : matrix.matrix;
+                graphics.FillPolygon(Utils.ToPointFPArray(points));
+            }
+        }
+
 		public void FillRoundRectangle (BrushX brush, RectangleF rect, float rx, float ry)
 		{
 			FillRoundRectangle (brush, rect.Left, rect.Top, rect.Width, rect.Height, rx, ry);

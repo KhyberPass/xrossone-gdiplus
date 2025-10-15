@@ -45,7 +45,7 @@ namespace XrossOne.Gdi
 	internal class GdiHelperPC
 	{
 		#region Font & Text
-		[DllImport("gdi32.dll")]
+		[DllImport("gdi32.dll", CharSet = CharSet.Unicode)]
 		public static extern IntPtr CreateFontIndirect(IntPtr pLogFont);
 
 		[DllImport("gdi32.dll")]

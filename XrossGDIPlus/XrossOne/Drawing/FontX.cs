@@ -127,15 +127,13 @@ namespace XrossOne.Drawing
 			lf.StrikeOut = (Style & FontStyle.Strikeout) == FontStyle.Strikeout? (byte)1: (byte)0;
 			lf.Underline = (Style & FontStyle.Underline) == FontStyle.Underline? (byte)1: (byte)0;
 			lf.Weight = (int)((Style & FontStyle.Bold) == FontStyle.Bold? GdiFontWeights.Bold : GdiFontWeights.Normal);
-			
-			IntPtr pLF = GdiHelper.LocalAlloc(0x40, 92);
+			lf.FaceName = Family;
+
+			IntPtr pLF = GdiHelper.LocalAlloc(0x40, Marshal.SizeOf(lf));
 			Marshal.StructureToPtr(lf, pLF, false);
-			if ( Family.Length > 32 ) Family = Family.Substring(0, 32);
-			Marshal.Copy(Family.ToCharArray(), 0, (IntPtr) ((int)pLF + 28), Family.Length);
 			hFont = GdiHelper.CreateFontIndirect(pLF);
-			//Marshal.PtrToStructure(pLF, lf);
 			GdiHelper.LocalFree(pLF);
-			
+
 			return hFont;
 		}
 
@@ -167,13 +165,11 @@ namespace XrossOne.Drawing
 			lf.StrikeOut = (Style & FontStyle.Strikeout) == FontStyle.Strikeout? (byte)1: (byte)0;
 			lf.Underline = (Style & FontStyle.Underline) == FontStyle.Underline? (byte)1: (byte)0;
 			lf.Weight = (int)((Style & FontStyle.Bold) == FontStyle.Bold? GdiFontWeights.Bold : GdiFontWeights.Normal);
-			
-			IntPtr pLF = GdiHelper.LocalAlloc(0x40, 92);
+			lf.FaceName = Family;
+
+			IntPtr pLF = GdiHelper.LocalAlloc(0x40, Marshal.SizeOf(lf));
 			Marshal.StructureToPtr(lf, pLF, false);
-			if ( Family.Length > 32 ) Family = Family.Substring(0, 32);
-			Marshal.Copy(Family.ToCharArray(), 0, (IntPtr) ((int)pLF + 28), Family.Length);
 			hFont = GdiHelper.CreateFontIndirect(pLF);
-			//Marshal.PtrToStructure(pLF, lf);
 			GdiHelper.LocalFree(pLF);
 			
 			return hFont;

@@ -79,7 +79,7 @@ namespace XrossOne.Gdi
 		public byte CharSet; 
 	}
 
-	[StructLayout(LayoutKind.Sequential)]
+	[StructLayout(LayoutKind.Sequential, CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
 	public class GdiLogFont
 	{
 		public int		Height;
@@ -96,8 +96,9 @@ namespace XrossOne.Gdi
 		public byte     Quality;
 		public byte     PitchAndFamily;
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst=32)]
-		public string	lfFaceName;
-	} 
+		public string	FaceName;
+	}
+
 	public enum GdiTextFormat
 	{
 		Top					= 0x00000000,
