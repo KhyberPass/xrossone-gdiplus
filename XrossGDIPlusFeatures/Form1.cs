@@ -63,8 +63,8 @@ namespace XrossGDIPlusFeatures
 			this.menuItem4 = new System.Windows.Forms.MenuItem();
 			this.menuItem5 = new System.Windows.Forms.MenuItem();
 			this.menuItem8 = new System.Windows.Forms.MenuItem();
-			this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
 			this.menuItem9 = new System.Windows.Forms.MenuItem();
+			this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
 			// 
 			// mainMenu2
 			// 

@@ -162,23 +162,65 @@ namespace XrossOne.Drawing
 		
 			int w = Math.Min(graphics.renderer.Width - x, buffer.Width);
 			int h = Math.Min(graphics.renderer.Height - y, buffer.Height);
-/*			for (int i = 0; i < h; i++)
+
+#if false
+            for (int i = 0; i < h; i++)
 			{
 				for (int j = 0; j < w; j++)	
 				{
-					//int currColor = buffer[j, i] & 0xFFFFFF;
-					if (buffer[j, i] == 0)
+                    int currColor = buffer[j, i] & 0xFFFFFF;
+                    if (currColor != 0x00FFFFFF)
 					{
 						int cx = x + j;
 						int cy = y + i;
 						int cc = graphics.Buffer[cx, cy];
-						graphics.Buffer[cx, cy] = XrossOne.DrawingFP.GraphicsPathRenderer.Merge(
-							cc, brush.WrappedBrush.GetColorAt(cx, cy, true));
+                        graphics.Buffer[cx, cy] = 0;
+                        //graphics.Buffer[cx, cy] = XrossOne.DrawingFP.GraphicsPathRenderer.Merge(
+                        //    cc, currColor);
+                        //graphics.Buffer[cx, cy] = XrossOne.DrawingFP.GraphicsPathRenderer.Merge(
+                        //	cc, brush.WrappedBrush.GetColorAt(cx, cy, true));
 					}
 				}
 			}
 			graphics.Buffer.IsDirty = true;
-*/			
+#elif false
+			for (int i = 0; i < h; i++)
+            {
+				for (int j = 0; j < w; j++)
+				{
+					int currColor = buffer[j, i];
+
+					if (currColor != 0x00ffffff)
+					{
+						// Get the text pixel color
+                        Color pixelText = Color.FromArgb(currColor);
+
+                        // Extract grayscale intensity from text buffer (assuming anti-aliased black text on white)
+						// Convert to grayscale (luminosity method)
+						double gray = 0.299 * pixelText.R + 0.587 * pixelText.G + 0.114 * pixelText.B;
+
+						// Compute alpha: 0 for white (255), 1 for black (0)
+						double alpha = 1.0 - (gray / 255.0);
+
+						// Blend with image buffer
+						int cx = x + j;
+						int cy = y + i;
+						int destColor = graphics.Buffer[cx, cy];
+
+						Color destPixel = Color.FromArgb(destColor);
+
+						byte or = (byte)(destPixel.R * (1 - alpha));
+						byte og = (byte)(destPixel.G * (1 - alpha));
+						byte ob = (byte)(destPixel.B * (1 - alpha));
+
+						Color final = Color.FromArgb(or, og, ob);
+
+						graphics.Buffer[cx, cy] = final.ToArgb();
+					}
+                }
+            }
+            graphics.Buffer.IsDirty = true;
+#else
 			Rectangle rect = new Rectangle(x, y, buffer.Width, buffer.Height);
 
             // Draws anti-aliased black text but with white background
@@ -189,10 +231,10 @@ namespace XrossOne.Drawing
             TextBrushX br = new TextBrushX(brush.WrappedBrush, buffer, rect);
 
 			FillRectangle(br, rect);
-			buffer.Dispose();
 
 			//DrawImage(buffer, new Point(x, y));
-			
+#endif
+            buffer.Dispose();
 		}
 		
 		public Size MeasureString(string text, FontX font)

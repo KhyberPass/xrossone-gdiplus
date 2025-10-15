@@ -118,11 +118,57 @@ namespace XrossOne.DrawingFP
 		
 		public void  DrawLine(int ff_x1, int ff_y1, int ff_x2, int ff_y2)
 		{
-			DrawPath(GraphicsPathFP.CreateLine(ff_x1, ff_y1, ff_x2, ff_y2));
+			// NSNS Straight hack
+			// Check for straight line
+			if (ff_x1 == ff_x2)
+			{
+#if true
+                // save the paint mode
+                int currPaintMode = paintMode;
+                paintMode = 3;
+                DrawPathStraight(GraphicsPathFP.CreateLine(ff_x1, ff_y1, ff_x2, ff_y2));
+                paintMode = currPaintMode;
+#else
+                DrawPath(GraphicsPathFP.CreateLine(ff_x1, ff_y1, ff_x2, ff_y2));
+#endif
+            }
+            else if (ff_y1 == ff_y2)
+			{
+#if true
+                // save the paint mode
+                int currPaintMode = paintMode;
+                paintMode = 3;
+                DrawPathStraight(GraphicsPathFP.CreateLine(ff_x1, ff_y1, ff_x2, ff_y2));
+                paintMode = currPaintMode;
+#else
+                DrawPath(GraphicsPathFP.CreateLine(ff_x1, ff_y1, ff_x2, ff_y2));
+#endif
+            }
+            else
+            {
+                DrawPath(GraphicsPathFP.CreateLine(ff_x1, ff_y1, ff_x2, ff_y2));
+                int currPaintMode = paintMode;
+            }
 		}
 		public void  DrawPolyline(PointFP[] points)
 		{
-			DrawPath(GraphicsPathFP.CreatePolyline(points));
+		    // NSNS Straight hack
+			if (points[0].X == points[1].X || points[0].Y == points[1].Y)
+			{
+#if true
+                // save the paint mode
+                int currPaintMode = paintMode;
+                paintMode = 3;
+                DrawPathStraight(GraphicsPathFP.CreateLine(points[0].X, points[0].Y, points[1].X, points[1].Y));
+                paintMode = currPaintMode;
+#else
+                DrawPath(GraphicsPathFP.CreatePolyline(points));
+#endif
+            }
+            else
+			{
+				DrawPath(GraphicsPathFP.CreatePolyline(points));
+			}
 		}
 		public void  DrawPolygon(PointFP[] points)
 		{
@@ -142,7 +188,12 @@ namespace XrossOne.DrawingFP
 		}
 		public void  DrawRect(int ff_xmin, int ff_ymin, int ff_xmax, int ff_ymax)
 		{
-			DrawPath(GraphicsPathFP.CreateRect(ff_xmin, ff_ymin, ff_xmax, ff_ymax));
+		    // NSNS Straight hack
+			//DrawPath(GraphicsPathFP.CreateRect(ff_xmin, ff_ymin, ff_xmax, ff_ymax));
+			DrawLine(ff_xmin, ff_ymin, ff_xmin, ff_ymax);
+            DrawLine(ff_xmin, ff_ymin, ff_xmax, ff_ymin);
+            DrawLine(ff_xmin, ff_ymax, ff_xmax, ff_ymax);
+            DrawLine(ff_xmax, ff_ymin, ff_xmax, ff_ymax);
 		}
 		public void  DrawOval(int ff_xmin, int ff_ymin, int ff_xmax, int ff_ymax)
 		{
@@ -159,7 +210,13 @@ namespace XrossOne.DrawingFP
 		public void  DrawPath(GraphicsPathFP path)
 		{
 			Buffer.IsDirty = true;
-			renderer.DrawPath(path.CalcOutline(lineStyle), matrix, lineStyle.Brush, GraphicsPathRenderer.MODE_ZERO);
+			renderer.DrawPath(path.CalcOutline(lineStyle), matrix, lineStyle.Brush, paintMode);
+        }
+        // NSNS Straight hack
+        public void DrawPathStraight(GraphicsPathFP path)
+        {
+            Buffer.IsDirty = true;
+            renderer.DrawPath(path, matrix, lineStyle.Brush, paintMode);
 		}
 		public void  FillClosedCurves(PointFP[] points, int offset, int numberOfSegments, int ff_factor)
 		{

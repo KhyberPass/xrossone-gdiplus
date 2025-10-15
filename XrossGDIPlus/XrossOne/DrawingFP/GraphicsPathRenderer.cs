@@ -280,6 +280,26 @@ namespace XrossOne.DrawingFP
 					i -= d * idivd;
 				}
 			}
+
+            // NSNS Alpha hack
+			// Check is this is a straight horiz line
+			if (drawMode == 3 && ymin == ymax)
+			{
+				//System.Math.Min((Width * RENDERER_FRAC_X_FACTOR) - 1, x);
+
+				if (xmax > (Width * RENDERER_FRAC_X_FACTOR) + 3)
+				{
+					return;
+				}
+
+                for (int xpos = xmin; xpos < xmax; xpos++)
+				{
+					scanbuf[scanIndex++] = ((ymin / RENDERER_FRAC_Y) << (RENDERER_REAL_X + RENDERER_FRAC_X + 1))
+						|
+						xpos << 1
+						| dire;
+				}
+            }
 		}
 /*		public void  DrawBuffer()
 		{
@@ -383,6 +403,13 @@ namespace XrossOne.DrawingFP
 				int newx = ((curs >> (RENDERER_FRAC_X + 1)) & RENDERER_REAL_X_MASK);
 				if ((newx != curx) || (newy != cury))
 				{
+                    // NSNS Alpha hack
+					if (drawMode == 3)
+					{
+                        rawPixels[curx, cury] = monoColor;
+                    }
+                    else
+					{
 					int alp = P_CUR * cure + P_CUA * (cula + cura);
 					if (alp != 0)
 					{
@@ -420,13 +447,14 @@ namespace XrossOne.DrawingFP
 							}
 						}
 					}
+					}
 					cure = curd;
 					
 					if (newy == cury)
 					{
 						if (curd != 0)
 						{
-							alp = P_CUR * curd;
+							int alp = P_CUR * curd;
 							if (alp != 0)
 							{
 								if (drawMode == MODE_XOR)
@@ -471,6 +499,14 @@ namespace XrossOne.DrawingFP
 				int lastMergedColor = 0;
 				for (int i = 0; i < count; i++)
 				{
+                    // NSNS Alpha hack
+                    if (drawMode == 3)
+                    {
+                        rawPixels[x + i, y] = monoColor;
+						continue;
+					}
+					else
+					{
 					int bkColor = rawPixels[x + i, y];
 					if (lastBackColor == bkColor)
 						rawPixels[x + i, y]	= lastMergedColor;
@@ -479,6 +515,7 @@ namespace XrossOne.DrawingFP
 						lastBackColor		= bkColor;
 						lastMergedColor		= Merge(bkColor, color);
 						rawPixels[x + i, y]	= lastMergedColor;
+						}
 					}
 				}
 			}
